@@ -5,6 +5,8 @@
     "coverage": "rm -rf coverage && deno task test --coverage && deno coverage --html",
     "dev": "deno run -A src/pdf_util.ts",
     "ok": "deno fmt --check && deno lint && deno task check:types && deno task test",
-    "test": "deno test -A --parallel --no-check"
+    "test": "deno test -A --parallel --no-check",
+    "version:increase": "deno run --allow-read=src/versions.json --allow-write=src/versions.json src/utils/increase_version.ts",
+    "version:latest": "deno run --allow-read src/utils/latest_version.ts"
   }
 }

@@ -1,0 +1,48 @@
+name: Bump Version and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseType:
+        description: "Type of release (major, minor, patch)"
+        required: true
+        default: "patch"
+
+jobs:
+  version-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: "1.x"
+
+      - name: Increase Version
+        run: deno task version:increase ${{ github.event.inputs.releaseType }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and Push Version Update
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/versions.json
+          git commit -m "increase version: $(deno task version:latest)"
+          git tag -a "$(deno task version:latest)" -m "create version $(deno task version:latest)"
+          git push origin HEAD:release_test --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
+        with:
+          tag_name: "$(deno task version:latest)"
+          release_name: "$(deno task version:latest)"
+          body: "Release of version $(deno task version:latest)"
+          draft: true
+          prerelease: false
