@@ -27,8 +27,8 @@ jobs:
 
       - name: Commit and Push Version Update
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "reed+github@vonredwitz.com"
+          git config --local user.name "Reed von Redwitz"
           git add src/versions.json
           git commit -m "increase version: $(deno task version:latest)"
           git tag -a "$(deno task version:latest)" -m "create version $(deno task version:latest)"
