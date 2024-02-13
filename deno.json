@@ -1,0 +1,10 @@
+{
+  "lock": false,
+  "tasks": {
+    "check:types": "deno check **/*.ts",
+    "coverage": "rm -rf coverage && deno task test --coverage && deno coverage --html",
+    "dev": "deno run -A src/pdf_util.ts",
+    "ok": "deno fmt --check && deno lint && deno task check:types && deno task test",
+    "test": "deno test -A --parallel --no-check"
+  }
+}
