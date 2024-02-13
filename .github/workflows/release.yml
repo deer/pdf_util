@@ -37,7 +37,7 @@ jobs:
           git add src/versions.json
           git commit -m "increase version: ${{ env.LATEST_VERSION }}"
           git tag -a "${{ env.LATEST_VERSION }}" -m "create version ${{ env.LATEST_VERSION }}"
-          git push origin HEAD:release_test --tags
+          git push origin HEAD:main --tags
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
 
