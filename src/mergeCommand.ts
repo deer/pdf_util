@@ -20,7 +20,7 @@ export const mergeCommand = new Command()
     await mergePdfs(filesAndPages, output);
   });
 
-async function mergePdfs(
+export async function mergePdfs(
   filesAndPages: string[],
   outputFilename: string,
 ) {

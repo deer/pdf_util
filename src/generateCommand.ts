@@ -9,7 +9,7 @@ export const generateCommand = new Command()
   })
   .hidden();
 
-async function generatePdf(identifier: string, numberOfPages: number) {
+export async function generatePdf(identifier: string, numberOfPages: number) {
   const pdfDoc = await PDFDocument.create();
 
   for (let i = 1; i <= numberOfPages; i++) {

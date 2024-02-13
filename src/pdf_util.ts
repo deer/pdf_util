@@ -9,7 +9,7 @@ import { mergeCommand } from "./mergeCommand.ts";
 import { getLatestVersion } from "./version.ts";
 
 await new Command()
-  .name("PDF Util")
+  .name("pdf_util")
   .version(getLatestVersion())
   .description(
     "A CLI utility for managing PDFs: easily merge PDFs together.",
