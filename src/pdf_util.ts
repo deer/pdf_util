@@ -6,10 +6,11 @@ import {
 } from "./deps.ts";
 import { generateCommand } from "./generateCommand.ts";
 import { mergeCommand } from "./mergeCommand.ts";
+import { getLatestVersion } from "./version.ts";
 
 await new Command()
   .name("PDF Util")
-  .version("0.0.1")
+  .version(getLatestVersion())
   .description(
     "A CLI utility for managing PDFs: easily merge PDFs together.",
   )
@@ -22,7 +23,7 @@ await new Command()
   .command(
     "upgrade",
     new UpgradeCommand({
-      main: "cliffy.ts",
+      main: "./src/pdf_util.ts",
       args: ["--allow-read", "--allow-write"],
       provider: new GithubProvider({ repository: "deer/pdf_util" }),
     }),
