@@ -15,7 +15,7 @@ scope might increase if I end up using it.
 ## Installation
 
 ```bash
-deno install --allow-read --allow-write https://raw.githubusercontent.com/deer/pdf_util/main/src/pdf_utiil.ts
+deno install --allow-read --allow-write https://raw.githubusercontent.com/deer/pdf_util/main/src/pdf_util.ts
 ```
 
 ## Installation from Source

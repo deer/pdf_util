@@ -1,13 +1,12 @@
 import { format, increment, parse, ReleaseType } from "./deps.ts";
+import VERSIONS from "./versions.json" with { type: "json" };
 
 type Versions = {
   versions: string[];
 };
 
 export function getVersions() {
-  const versions = JSON.parse(
-    Deno.readTextFileSync("./src/versions.json"),
-  ) as Versions;
+  const versions = VERSIONS as Versions;
   return versions.versions;
 }
 
