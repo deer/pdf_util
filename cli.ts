@@ -3,10 +3,10 @@ import {
   CompletionsCommand,
   GithubProvider,
   UpgradeCommand,
-} from "./deps.ts";
-import { generateCommand } from "./generateCommand.ts";
-import { mergeCommand } from "./mergeCommand.ts";
-import { getLatestVersion } from "./version.ts";
+} from "./src/deps.ts";
+import { generateCommand } from "./src/generateCommand.ts";
+import { mergeCommand } from "./src/mergeCommand.ts";
+import { getLatestVersion } from "./src/version.ts";
 
 await new Command()
   .name("pdf_util")
@@ -23,7 +23,7 @@ await new Command()
   .command(
     "upgrade",
     new UpgradeCommand({
-      main: "./src/pdf_util.ts",
+      main: "./cli.ts",
       args: ["--allow-read", "--allow-write"],
       provider: new GithubProvider({ repository: "deer/pdf_util" }),
     }),

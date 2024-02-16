@@ -5,7 +5,7 @@ export const mergeCommand = new Command()
   .description("Merge multiple PDF files into one.")
   .option(
     "-f, --filesAndPages <filesAndPages...:string>",
-    "The PDF files to merge with optional page ranges in brackets, e.g., A.pdf[1-2]",
+    "The PDF files to merge with optional page ranges following a colon, e.g., A.pdf:1-2,4,6-8. If no page range is provided, all pages are included.",
   )
   .option(
     "-o, --output <output:string>",

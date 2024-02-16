@@ -5,7 +5,7 @@ Deno.test("pdf_util runs", async (t) => {
 
   await t.step("help command", async () => {
     const helpOutput =
-      await $`deno run --allow-read --allow-net ./src/pdf_util.ts --help`
+      await $`deno run --allow-read --allow-net ./cli.ts --help`
         .text();
     assertStringIncludes(stripAnsiCode(helpOutput), "Usage:   pdf_util");
     assertStringIncludes(
@@ -14,7 +14,7 @@ Deno.test("pdf_util runs", async (t) => {
     );
   });
 
-  const pdfUtilLocation = "./src/pdf_util.ts";
+  const pdfUtilLocation = "./cli.ts";
   await t.step("generate command", async () => {
     try {
       await $`deno run -A ${pdfUtilLocation} generate A 3`;

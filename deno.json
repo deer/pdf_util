@@ -3,7 +3,7 @@
   "tasks": {
     "check:types": "deno check **/*.ts",
     "coverage": "rm -rf coverage && deno task test --coverage && deno coverage --html",
-    "dev": "deno run -A src/pdf_util.ts",
+    "dev": "deno run -A cli.ts",
     "ok": "deno fmt --check && deno lint && deno task check:types && deno task test",
     "test": "deno test -A --parallel --no-check",
     "version:increase": "deno run --allow-read=src/versions.json --allow-write=src/versions.json src/utils/increase_version.ts",
