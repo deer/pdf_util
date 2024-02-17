@@ -25,7 +25,13 @@ await new Command()
     "upgrade",
     new UpgradeCommand({
       main: "./cli.ts",
-      args: ["--allow-read", "--allow-write"],
+      args: [
+        "--allow-read", // so it can read PDFs
+        "--allow-write", // so it can write PDFs
+        "--allow-net=cdn.deno.land,api.github.com", // so it can upgrade
+        "--allow-run", // also so it can upgrade
+        // "--allow-env=_"  // so it can determine the name of itself -- this isn't implemented in cliffy yet
+      ],
       provider: [
         new DenoLandProvider(),
         new GithubProvider({ repository: "deer/pdf_util" }),

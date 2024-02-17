@@ -15,7 +15,7 @@ scope might increase if I end up using it.
 ## Installation
 
 ```bash
-deno install --allow-read --allow-write --allow-net https://deno.land/x/pdf_util/cli.ts
+deno install --allow-read --allow-write --allow-net=cdn.deno.land,api.github.com --allow-run https://deno.land/x/pdf_util/cli.ts
 ```
 
 ## Installation from Source
@@ -26,7 +26,7 @@ PDF Util, clone the repository to your local machine:
 ```bash
 git clone https://github.com/deer/pdf_util.git
 cd pdf_util
-deno install --allow-read --allow-write src/pdf_util.ts
+deno install --allow-read --allow-write --allow-net=cdn.deno.land,api.github.com --allow-run cli.ts
 ```
 
 ## Change Installed Name
@@ -35,8 +35,11 @@ You can use `-n yourDesiredName` to change the name of the executable, if you
 don't want to type `pdf_util merge ...` all the time.
 
 Personally, I have it installed like
-`deno install --allow-read --allow-write src/pdf_util.ts -n pdf` so that I can
-run `pdf merge ...`.
+`deno install --allow-read --allow-write --allow-net=cdn.deno.land,api.github.com --allow-run cli.ts -n pdf`
+so that I can run `pdf merge ...`.
+
+> Installing with a name will break the upgrade command. You can install the new
+> version manually.
 
 ## Usage
 
